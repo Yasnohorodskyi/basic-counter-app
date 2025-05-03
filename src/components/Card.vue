@@ -1,25 +1,27 @@
 <script setup>
-import Count from './Count.vue'
+import Count from "./Count.vue";
 
 defineProps({
   title: {
     type: String,
-    default: ''
+    default: "",
   },
   subtitle: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 </script>
 
 <template>
   <div class="card">
     <h2 class="card__title">{{ title }}</h2>
-    <p class="card__subtitle">
-      {{ subtitle }}
+    <div class="card__subtitle-wrapper">
+      <p class="card__subtitle">
+        {{ subtitle }}
+      </p>
       <Count />
-    </p>
+    </div>
     <slot />
   </div>
 </template>
@@ -42,8 +44,15 @@ defineProps({
   margin: 0;
 }
 
+.card__subtitle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .card__subtitle {
   font-size: 1.25rem;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 </style>

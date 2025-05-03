@@ -7,21 +7,29 @@ const count = computed(() => counterStore.count)
 const isNegative = computed(() => count.value < 0)
 </script>
 <template>
-  <transition name="fade" mode="out-in">
-    <span
-      class="card__count"
-      :class="isNegative && 'card__count-negative'"
-      :key="count">
-      {{ count }}
-    </span>
-  </transition>
+  <div class="card__count-wrapper">
+    <transition name="fade" mode="out-in">
+      <p
+        class="card__count"
+        :class="isNegative && 'card__count-negative'"
+        :key="count">
+        {{ count }}
+      </p>
+    </transition>
+  </div>
 </template>
 <style scoped>
 .card__count {
   font-size: 3rem;
   font-weight: bold;
   color: #0196a7;
-  margin-left: 1rem;
+}
+
+.card__count-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
 }
 .card__count-negative {
   color: #ff4c4c;
